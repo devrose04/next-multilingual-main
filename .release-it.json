@@ -1,0 +1,21 @@
+{
+  "git": {
+    "commitMessage": "🔖 release v${version}"
+  },
+  "github": {
+    "release": true
+  },
+  "hooks": {
+    "before:init": ["npm run build-to-release"],
+    "after:@release-it/conventional-changelog:beforeRelease": [
+      "npx prettier --write ./CHANGELOG.md"
+    ]
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": true
+    }
+  }
+}

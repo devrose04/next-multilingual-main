@@ -1,0 +1,27 @@
+# IDE config
+.idea
+.vscode
+
+# macOS directory attributes
+.DS_Store
+
+# Node dependencies
+node_modules/
+
+# Compiled Javascript package
+/lib/
+
+# Next.js files
+.next/
+.env.local
+
+# Secrets
+.env
+
+# Cypress
+cypress/screenshots
+cypress/videos
+cypress/downloads
+
+# Logs
+*.log

@@ -1,0 +1,169 @@
+{
+  "name": "next-multilingual",
+  "version": "5.0.21",
+  "description": "An opinionated end-to-end solution for Next.js applications that requires multiple languages.",
+  "keywords": [
+    "Next",
+    "Next js",
+    "Next.js",
+    "multilingual",
+    "i18n",
+    "internationalization",
+    "intl",
+    "localization",
+    "l10n",
+    "globalization",
+    "g11n",
+    "ICU",
+    "MessageFormat"
+  ],
+  "homepage": "https://github.com/Avansai/next-multilingual#readme",
+  "bugs": {
+    "url": "https://github.com/Avansai/next-multilingual/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avansai/next-multilingual.git"
+  },
+  "license": "MIT",
+  "author": "Avansai (https://avansai.com)",
+  "type": "commonjs",
+  "exports": {
+    ".": "./lib/index.js",
+    "./config": "./lib/config/index.js",
+    "./head": "./lib/head/index.js",
+    "./head/ssr": "./lib/head/ssr.js",
+    "./link": "./lib/link/index.js",
+    "./link/ssr": "./lib/link/ssr.js",
+    "./messages": "./lib/messages/index.js",
+    "./messages/babel-plugin": "./lib/messages/babel-plugin.js",
+    "./router": "./lib/router/index.js",
+    "./url": "./lib/url/index.js",
+    "./url/ssr": "./lib/url/ssr.js"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "config": [
+        "lib/config/index.d.ts"
+      ],
+      "head": [
+        "lib/head/index.d.ts"
+      ],
+      "head/ssr": [
+        "lib/head/ssr.d.ts"
+      ],
+      "link": [
+        "lib/link/index.d.ts"
+      ],
+      "link/ssr": [
+        "lib/link/ssr.d.ts"
+      ],
+      "messages": [
+        "lib/messages/index.d.ts"
+      ],
+      "messages/babel-plugin": [
+        "lib/messages/babel-plugin.d.ts"
+      ],
+      "router": [
+        "lib/router/index.d.ts"
+      ],
+      "url": [
+        "lib/url/index.d.ts"
+      ],
+      "url/ssr": [
+        "lib/url/ssr.d.ts"
+      ]
+    }
+  },
+  "directories": {
+    "lib": "lib",
+    "example": "example",
+    "docs": "docs"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rm -Rf ./lib && tsc",
+    "build-to-release": "npm run prettier && npm run lint-fix-all && npm run build",
+    "cypress": "cypress open",
+    "cypress-headless": "cypress run --browser chrome",
+    "e2e": "start-server-and-test start-example http://127.0.0.1:3000 cypress",
+    "e2e-base-path": "cross-env BASE_PATH=/some-path CYPRESS_basePath=/some-path start-server-and-test start-example http://127.0.0.1:3000/some-path cypress",
+    "e2e-build": "cross-env CYPRESS_isProd=true start-server-and-test start-example-build http://127.0.0.1:3000 cypress",
+    "e2e-build-base-path": "cross-env CYPRESS_isProd=true BASE_PATH=/some-path CYPRESS_basePath=/some-path start-server-and-test start-example-build http://127.0.0.1:3000/some-path cypress",
+    "e2e-build-headless": "cross-env CYPRESS_isProd=true start-server-and-test start-example-build http://127.0.0.1:3000 cypress-headless",
+    "e2e-build-headless-base-path": "cross-env CYPRESS_isProd=true BASE_PATH=/some-path CYPRESS_basePath=/some-path start-server-and-test start-example-build http://127.0.0.1:3000/some-path cypress-headless",
+    "e2e-headless": "start-server-and-test start-example http://127.0.0.1:3000 cypress-headless",
+    "e2e-headless-base-path": "cross-env BASE_PATH=/some-path CYPRESS_basePath=/some-path start-server-and-test start-example http://127.0.0.1:3000/some-path cypress-headless",
+    "lint-check": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json .",
+    "lint-check-all": "npm run lint-check && npm run lint-check-example",
+    "lint-check-example": "cd example && npm run lint-check",
+    "lint-fix": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json --fix .",
+    "lint-fix-all": "npm run lint-fix && npm run lint-fix-example",
+    "lint-fix-example": "cd example && npm run lint-fix",
+    "lint-print-config": "eslint --print-config ./eslintrc.yaml",
+    "pre-release": "dotenv -- release-it --only-version --preRelease",
+    "prettier": "prettier --write .",
+    "release": "dotenv -- release-it --only-version",
+    "start-example": "cd example && rm -Rf .next && npm run dev",
+    "start-example-build": "cd example && rm -Rf .next && npm run build && npm run start",
+    "test": "npm run build-to-release && npm run e2e-headless && npm run e2e-headless-base-path && npm run e2e-build-headless && npm run e2e-build-headless-base-path"
+  },
+  "dependencies": {
+    "@babel/core": "7.22.20",
+    "colorette": "2.0.20",
+    "intl-messageformat": "10.5.3",
+    "messages-modules": "1.1.62",
+    "properties-file": "3.2.22",
+    "resolve-accept-language": "2.0.19",
+    "watchpack": "2.4.0",
+    "webpack": "5.88.2"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "7.0.2",
+    "@types/babel__core": "7.20.2",
+    "@types/cookie": "0.5.2",
+    "@types/node": "20.6.3",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
+    "@types/watchpack": "2.4.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
+    "cross-env": "7.0.3",
+    "cypress": "13.2.0",
+    "cypress-fail-on-console-error": "5.0.0",
+    "cypress-wait-until": "2.0.1",
+    "dotenv-cli": "7.3.0",
+    "eslint": "8.50.0",
+    "eslint-config-next": "v13.5.2",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-import-resolver-node": "0.3.9",
+    "eslint-import-resolver-typescript": "3.6.1",
+    "eslint-plugin-cypress": "2.15.1",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-json-files": "3.0.0",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-prefer-arrow-functions": "3.1.4",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-tsdoc": "0.2.17",
+    "eslint-plugin-unicorn": "48.0.1",
+    "next": "13.5.2",
+    "prettier": "3.0.3",
+    "prettier-plugin-organize-imports": "3.2.3",
+    "prettier-plugin-properties": "0.2.0",
+    "prettier-plugin-sh": "^0.13.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "release-it": "16.1.5",
+    "start-server-and-test": "2.0.1",
+    "typescript": "5.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
